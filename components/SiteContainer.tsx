@@ -1,4 +1,3 @@
-import styles from "../styles/Home.module.css";
 import { FunctionComponent } from "react";
 import { PropsWithChildren } from "react";
 
@@ -13,7 +12,7 @@ const SiteContainer: FunctionComponent<PropsWithChildren<IProps>> = ({
   children,
 }) => {
   return (
-    <div className={styles.container}>
+    <div className="container max-w-4xl pt-10">
       <h1>{title}</h1>
       {description ? <p>{description}</p> : ""}
       {children}

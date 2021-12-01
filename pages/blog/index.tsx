@@ -14,7 +14,11 @@ export default function Blog({ posts, title, description }: IProps) {
     <SiteContainer title={title} description={description}>
       <div>
         <section className="blog-posts">
-          <p>This is a test</p>
+          <p>
+            Lots of long text so I can see how long things are across the screen
+            at maximum oh yeah woohoo it needs to go further I wonder when the
+            line wrapping will come into play
+          </p>
           <h3>✍🏼 Blog posts on my experience as a software engineer</h3>
           <BlogPosts posts={posts} />
         </section>
