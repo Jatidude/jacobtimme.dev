@@ -22,15 +22,12 @@ const Home: NextPage = () => {
               className="rounded-full"
             />
           </div>
-          <p>
-            Hey it&apos;s me ya boy jacob timme. I&apos;m a pretty cool dude I
-            think.
-          </p>
+          <p>This site is under construction</p>
         </SiteContainer>
+        <Link href="/blog">
+          <a>Blog</a>
+        </Link>
       </main>
-      <Link href="/blog">
-        <a>Blog</a>
-      </Link>
     </div>
   );
 };
