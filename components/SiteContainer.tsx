@@ -12,7 +12,7 @@ const SiteContainer: FunctionComponent<PropsWithChildren<IProps>> = ({
   children,
 }) => {
   return (
-    <div className="container max-w-4xl pt-10">
+    <div className="container max-w-4xl pt-10 mx-auto">
       <h1>{title}</h1>
       {description ? <p>{description}</p> : ""}
       {children}
