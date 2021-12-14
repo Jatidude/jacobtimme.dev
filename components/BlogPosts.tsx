@@ -1,13 +1,14 @@
 import Link from "next/link";
 import { PostMeta } from "../types/Blog";
-
+import BlogPost from "./BlogPost";
 interface IProps {
   posts: { meta: PostMeta; slug: string }[];
+  className?: string;
 }
 
-const BlogPosts = ({ posts }: IProps) => {
+const BlogPosts = ({ posts, className }: IProps) => {
   return (
-    <div className="posts">
+    <div className={className}>
       {!posts && <div>No posts!</div>}
       <ul>
         {posts &&
@@ -18,15 +19,7 @@ const BlogPosts = ({ posts }: IProps) => {
                 new Date(a.meta.publishedDate).getTime()
             )
             .map((post) => {
-              return (
-                <article key={post.slug} className="post-title">
-                  <Link href={{ pathname: `/blog/${post.slug}` }}>
-                    <a>{post.meta.title}</a>
-                  </Link>{" "}
-                  - {post.meta.description}
-                  <p>[ {post.meta.tags.join(", ")} ]</p>
-                </article>
-              );
+              return <BlogPost key={post.slug} post={post} />;
             })}
       </ul>
     </div>

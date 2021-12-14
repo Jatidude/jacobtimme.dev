@@ -1,4 +1,4 @@
-import { getAllPostsWithFrontMatter } from "../../lib/utils";
+import { getAllPostsFrontMatter } from "../../lib/utils";
 import SiteContainer from "../../components/SiteContainer";
 import BlogPosts from "../../components/BlogPosts";
 import { PostMeta } from "../../types/Blog";
@@ -28,7 +28,7 @@ export default function Blog({ posts, title, description }: IProps) {
 }
 
 export async function getStaticProps() {
-  const posts = await getAllPostsWithFrontMatter("blog");
+  const posts = await getAllPostsFrontMatter("blog");
 
   return {
     props: {

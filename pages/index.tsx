@@ -4,7 +4,18 @@ import Image from "next/image";
 import Link from "next/link";
 import avatar from "../public/Avatar.jpg";
 import SiteContainer from "../components/SiteContainer";
-const Home: NextPage = () => {
+import { getMostRecentPosts } from "../lib/utils";
+import { PostMeta } from "../types/Blog";
+import BlogPosts from "../components/BlogPosts";
+
+interface IProps {
+  posts: { meta: PostMeta; slug: string }[];
+  title: string;
+  description: string;
+}
+
+const Home = ({ posts, title, description }: IProps) => {
+  console.log(posts);
   return (
     <div className="container">
       <Head>
@@ -12,7 +23,7 @@ const Home: NextPage = () => {
         <meta name="description" content="It's my website and stuff" />
       </Head>
       <main>
-        <SiteContainer title={"Jacob Timme"} description={""}>
+        <SiteContainer title={title} description={description}>
           <div className="mx-auto w-80 h-80 relative">
             <Image
               src={avatar}
@@ -23,6 +34,8 @@ const Home: NextPage = () => {
             />
           </div>
           <p>This site is under construction</p>
+          <h2 className="pt-10">Most recent blog post:</h2>
+          <BlogPosts className="pt-4" posts={posts} />
         </SiteContainer>
         <Link href="/blog">
           <a>Blog</a>
@@ -31,5 +44,17 @@ const Home: NextPage = () => {
     </div>
   );
 };
+
+export async function getStaticProps() {
+  const posts = await getMostRecentPosts("blog", 3);
+  console.log(posts);
+  return {
+    props: {
+      posts,
+      title: "Jacob Timme",
+      description: "",
+    },
+  };
+}
 
 export default Home;
